@@ -1,0 +1,31 @@
+body {
+  margin: 100px 200px;
+}
+
+h1 {
+  color: red;
+}
+
+h2 {
+  color: red;
+}
+
+span {
+  background-color: black;
+  color: white;
+}
+
+#internet,
+#browser {
+  border: 1px solid red;
+}
+
+input[type="button"] {
+  border: 1px solid blue;
+  transition: all 2s;
+}
+
+input[type="button"]:hover {
+  background-color: black;
+  color: white;
+}

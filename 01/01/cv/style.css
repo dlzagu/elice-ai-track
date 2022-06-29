@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Do Hyeon", sans-serif;
+}
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+header {
+  background-color: gray;
+  color: white;
+  text-decoration: none;
+  padding-left: 10px;
+}
+main {
+  height: 100%;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+footer {
+  background-color: lightgray;
+  padding-left: 10px;
+}
+ul a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+section {
+  width: 50%;
+  margin-bottom: 20px;
+}
+div {
+  display: flex;
+  flex-wrap: wrap;
+}
+a:link,
+a:visited {
+  color: black;
+}
