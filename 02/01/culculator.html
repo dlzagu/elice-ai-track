@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>계산기</title>
+  </head>
+  <body>
+    <h1>계산기</h1>
+    <input type="text" placeholder="숫자와 연산을 입력하시오." />
+    <button
+      onclick="
+      var num = document.querySelector('input').value.split(/[^0-9]/g);
+      var signs = document.querySelector('input').value.split(/[0-9]/g).filter(a=> a!='' );
+      var 우선 = ['*','/','+','-'];
+      
+      function transform (i, a, b){               // 기호에 따른 결과값 구하는 함수 
+        if (i === '+') return a+b;
+        else if (i === '-') return a-b;
+        else return a*b;
+    }
+      
+      while(true){
+          var signIndex = 0;
+          for(let i=0; i<signs.length; i++){
+             
+             if(우선[signIndex]===signs[i]){
+                 num[i] = transform(signs[i], num[i], num[i+1]);
+                 num.splice(i+1,1);
+                 signs.splice(i,1);
+                 i--;
+             }
+                        
+                  
+              }
+              signIndex ++;
+              if(num.length===1) break;
+          
+      }
+      alert(`결과 ${num[0]}`)
+      "
+    >
+      입력완료
+    </button>
+  </body>
+</html>

@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="./main.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>자바스크립트</h1>
@@ -15,6 +17,25 @@
       provident aliquid eaque autem eligendi earum.
     </p>
 
-    <input type="button" value="공부하기" />
+    <input
+      type="button"
+      value="night"
+      onclick="
+      if ( document.querySelector('body').style.background !=='black'){
+        document.querySelector('body').style.background = 'black';
+        document.querySelector('body').style.color = 'white';
+        document.querySelector('p').style.borderColor = 'white';
+        document.querySelector('input').value = 'day';
+      }else {
+        document.querySelector('body').style.background = 'white';
+        document.querySelector('body').style.color = 'black';
+        document.querySelector('p').style.borderColor = 'black';
+        document.querySelector('input').value = 'night';
+      
+      }
+    
+    "
+    />
   </body>
+  <script></script>
 </html>
