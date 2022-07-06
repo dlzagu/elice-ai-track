@@ -11,25 +11,57 @@
   <body>
     <h1>자바스크립트</h1>
     <p>
-      <strong>javascript,</strong> ipsum dolor sit amet consectetur adipisicing
-      elit. Exercitationem atque dignissimos, sunt impedit perferendis harum id
-      recusandae natus aspernatur porro consequatur, veniam reiciendis odit
-      provident aliquid eaque autem eligendi earum.
+      <strong>javascript,</strong>
+      <span
+        style="background-color: lightgrey; padding: 0 5px; cursor: pointer"
+        onclick="
+        var 글 = 'ipsum dolor sit amet consectetur adipisicingelit. Exercitationem atque dignissimos, sunt impedit perferendis harum idrecusandae natus aspernatur porro consequatur, veniam reiciendis odit provident aliquid eaque autem eligendi earum.'
+      document.querySelector('span').innerText = 글"
+        >...</span
+      >
+    </p>
+
+    <h2>파이썬</h2>
+    <p>
+      Python is
+      <span
+        style="background-color: gray; padding: 0 5px; cursor: pointer"
+        onclick="
+        this.style.display = 'none';
+        document.querySelector('#python-explain').style.display = 'inline';
+        "
+      >
+        ...
+      </span>
+      <span id="python-explain" style="display: none">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore cumque
+        dolore fugiat quia dolores? Sed sit quod, perferendis, adipisci
+        voluptate mollitia nemo earum aperiam minus ab repellat consequatur
+        repellendus rem.
+      </span>
     </p>
 
     <input
       type="button"
       value="night"
       onclick="
-      if ( document.querySelector('body').style.background !=='black'){
-        document.querySelector('body').style.background = 'black';
+      const body = document.querySelector('body');
+      if ( body.style.background  !=='black'){
+        body.style.background = 'black';
+        body.style.color = 'white';
         document.querySelector('body').style.color = 'white';
-        document.querySelector('p').style.borderColor = 'white';
+        let pElem = document.querySelectorAll('p');
+        for (let i = 0; i < pElem.length; i++) {
+          pElem[i].style.borderColor = 'white';
+        }
         document.querySelector('input').value = 'day';
       }else {
-        document.querySelector('body').style.background = 'white';
-        document.querySelector('body').style.color = 'black';
-        document.querySelector('p').style.borderColor = 'black';
+        body.style.background = 'white';
+        body.style.color = 'black';
+        let pElem = document.querySelectorAll('p');
+        for (let i = 0; i < pElem.length; i++) {
+          pElem[i].style.borderColor = 'black';
+        }
         document.querySelector('input').value = 'night';
       
       }
