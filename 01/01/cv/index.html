@@ -12,61 +12,352 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/
+    icon?family=Material+Icons|Material+Icons+Sharp|Material+Icons+Two+Tone|Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+      @font-face {
+        font-family: "NEXON Lv2 Gothic";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "NEXON Lv2 Gothic Bold";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic Bold.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Material Icons";
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+        src: local("Material Icons"), local("MaterialIcons-Regular"),
+          url(https://example.com/MaterialIcons-Regular.woff2) format("woff2"),
+          url(https://example.com/MaterialIcons-Regular.woff) format("woff"),
+          url(https://example.com/MaterialIcons-Regular.ttf) format("truetype");
+      }
+      .material-icons {
+        font-family: "Material Icons";
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px; /* Preferred icon size */
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr; /* Support for all WebKit browsers. */
+        -webkit-font-smoothing: antialiased; /* Support for Safari and Chrome. */
+        text-rendering: optimizeLegibility; /* Support for Firefox. */
+        -moz-osx-font-smoothing: grayscale; /* Support for IE. */
+        font-feature-settings: "liga";
+      }
+      @import url("https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "NEXON Lv2 Gothic";
+      }
+      body {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      /* ////////header */
+      header {
+        background-color: #f0f0f0;
+        color: rgb(62, 62, 62);
+        text-decoration: none;
+        width: 40%;
+        height: 100%;
+        padding-left: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .header__main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .header__main-img {
+        margin-bottom: 20px;
+        width: 60%;
+      }
+
+      .header__title {
+        margin-top: 10%;
+        font-size: 2rem;
+        text-align: center;
+        width: 100%;
+        text-transform: uppercase;
+        line-height: 6.5vh;
+        font-weight: 600;
+      }
+      .header__title-first-line {
+        font-size: 2.2rem;
+        font-weight: 550;
+      }
+      .header__title-daeun {
+        font-family: "NEXON Lv2 Gothic Bold";
+        font-size: 3rem;
+        text-decoration: underline 1rem #f8cd07;
+      }
+      .header__main-information {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10%;
+      }
+      .header__main-information-u {
+        display: flex;
+        flex-direction: column;
+        padding-top: 1.4rem;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        padding-left: 1.5rem;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      #badge {
+        font-size: 7rem;
+
+        color: rgb(62, 62, 62);
+        margin-right: 1rem;
+      }
+
+      main {
+        width: 60%;
+        background-color: #e4e4e4;
+
+        padding: 3vh 8vh;
+      }
+
+      /* ////main */
+      .container {
+        height: 90%;
+
+        flex-direction: column;
+        padding: 3vh 5vh;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+
+      .content__title {
+        letter-spacing: 0.2rem;
+        padding-bottom: 0.8rem;
+        font-size: 1.7rem;
+        color: #3e3e3e;
+        width: 100%;
+        border-bottom: 0.2rem solid #f8cd07;
+        margin-bottom: 1rem;
+      }
+
+      .contet__subtitle-explan {
+        padding-left: 2rem;
+        font-weight: 500;
+      }
+
+      .content__p {
+        font-size: 1.2rem;
+      }
+
+      .contet__subtitle-explan > * {
+        margin-bottom: 2vh;
+        font-weight: 600;
+        color: #3e3e3e;
+      }
+
+      #check {
+        font-size: 2vh;
+        font-weight: 900;
+        color: #f8cd07;
+        margin-right: 1vh;
+      }
+
+      @media only screen and (max-width: 1000px) {
+        html {
+          font-size: 70%;
+        }
+        body {
+          flex-direction: column;
+          height: 100%;
+        }
+        header {
+          width: 100%;
+        }
+        main {
+          width: 100%;
+        }
+        .header__main-img {
+          width: 40%;
+        }
+        .header__title {
+          margin-top: 5%;
+          margin-bottom: 5%;
+        }
+        .content {
+          margin-bottom: 2rem;
+        }
+        .container {
+          width: 100%;
+        }
+        main {
+          padding: 0;
+        }
+        .header__main {
+          margin-bottom: 2rem;
+        }
+      }
+      .hello {
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: NEXON Lv2 Gothic Bold;
+        letter-spacing: 1rem;
+        top: 0;
+        left: 0;
+        color: rgb(62, 62, 62);
+        font-size: 9rem;
+        background-color: #f0f0f0;
+      }
+    </style>
   </head>
   <body>
+    <div class="hello">Hello</div>
     <header>
-      <nav>
-        <ul>
-          <li><a href="#">홈</a></li>
-          <li><a href="#cv">이력서</a></li>
-          <li><a href="#study">학력사항</a></li>
+      <h1 class="header__title">
+        <span class="header__title-first-line">웹개발과 디자인을 좋아하는</span
+        ><br />
+        <sapn class="header__title-daeun">김대운 </sapn>입니다.
+      </h1>
+
+      <div class="header__main">
+        <img
+          src="https://velog.velcdn.com/images/dlzagu/post/a674a97b-fd9d-455c-8a69-b8ddfe590413/image.JPG"
+          alt="daeun"
+          class="header__main-img"
+        />
+
+        <p class="header__main-introduce">
+          <span class="header__main-introduce-thick">프론트엔드 개발자</span>를
+          희망. <br />
+          패션학도로서
+          <span class="header__main-introduce-thick">디자인사고가 우수</span>.
+          <br />
+        </p>
+      </div>
+
+      <div class="header__main-information">
+        <span class="material-icons" id="badge"> badge </span>
+
+        <ul class="header__main-information-ul">
+          <li>UNIV | CHUNGBUK</li>
+          <li>MAJOR | 의류/벤쳐비즈니스</li>
+          <li>PHONE | +82 10.3215.8327</li>
+          <li>E-MAIL | eodnsdlekd@naver.com</li>
+          <li>BIRTH | 1997.04.19</li>
+          <li>ADDRESS | 충북 청주시 서원구</li>
         </ul>
-      </nav>
+      </div>
     </header>
     <main>
-      <section>
-        <h1 id="cv">이력서</h1>
-        <h2>김대운</h2>
-        <img src="./IMG_2314.JPG" alt="img" width="300" />
-      </section>
+      <div class="container">
+        <section class="content">
+          <h1 class="content__title">관심 직무 또는 앞으로의 목표</h1>
 
-      <div>
-        <section>
-          <h3>인적사항</h3>
-          <p>
-            <strong>생년월일 : </strong> 1997.04.19 | B형 <br />
-            <strong>주소 : </strong> 청주시 <br />
-            <strong>연락처 :</strong> eodnsdlekd@naver.com | 010.3215. <br />
-          </p>
-        </section>
-        <section>
-          <h3 id="study">학력사항</h3>
-          <ul>
-            <li>2010~2013</li>
-            <li>2016</li>
-            <li>2016.03</li>
-          </ul>
+          <div class="content__subtitle-explan">
+            <p class="content__p">
+              <span class="material-icons" id="check"> done </span>웹 프론트엔드
+              개발자
+            </p>
+          </div>
         </section>
 
-        <section>
-          <h3>경력사항</h3>
-          <ol>
-            <li>한국</li>
-            <li>엘리스</li>
-            <li>트랙</li>
-          </ol>
-        </section>
+        <section class="content">
+          <h1 class="content__title">관심 분야 또는 기술</h1>
 
-        <section>
-          <h3>보유스킬</h3>
-          <ul>
-            <li><a href="#">HTML</a></li>
-            <li><a href="#">HTML</a></li>
-            <li><a href="#">HTML</a></li>
-          </ul>
+          <div class="content__subtitle-explan">
+            <p class="content__p">
+              <span class="material-icons" id="check"> done </span>HTML/CSS, JS,
+              React, Vue, TS
+            </p>
+          </div>
+        </section>
+        <section class="content">
+          <h1 class="content__title">AI 트랙에서 가장 기대되는 점</h1>
+
+          <div class="content__subtitle-explan">
+            <p class="content__p">
+              <span class="material-icons" id="check"> done </span>나 자신의
+              성장, 팀 협업 경험, 커뮤니케이션 능력 향상 등
+            </p>
+          </div>
+        </section>
+        <section class="content">
+          <h1 class="content__title">레이서에게 하고 싶은 말</h1>
+
+          <div class="content__subtitle-explan">
+            <p class="content__p">
+              <span class="material-icons" id="check"> done </span> 트랙
+              기간동안 후회 없도록 열심히 달려봅시다.
+            </p>
+          </div>
+        </section>
+        <section class="content">
+          <h1 class="content__title">취미, 특기</h1>
+
+          <div class="content__subtitle-explan">
+            <p class="content__p">
+              <span class="material-icons" id="check"> done </span> 낚시, 요리,
+              여행
+            </p>
+          </div>
+          <script>
+            function timeOit() {
+              $(".hello").css("display", "none");
+            }
+            setTimeout(timeOit, 2000);
+          </script>
         </section>
       </div>
     </main>
-    <footer>Author by : 엘리스 토끼</footer>
   </body>
 </html>
+<!-- 관심 직무 또는 앞으로의 목표 (웹 프론트엔드 개발자 / 인공지능 서비스 기획자 등)
+관심 분야 또는 기술 (React / Node 등) AI 트랙에서 가장 기대되는 점 동료
+레이서에게 하고 싶은 말 취미, 특기, 좋아하는 음료, 최근에 본 영화 또는 책 등
+나를 표현할 수 있는 정보 -->
