@@ -1,0 +1,13 @@
+<script>
+  function addCallback(fn) {
+    setTimeout(() => {
+      let sum = 1 + 1;
+      console.log(sum);
+      fn();
+    }, 3000);
+  }
+
+  addCallback(() => {
+    console.log("end");
+  });
+</script>
