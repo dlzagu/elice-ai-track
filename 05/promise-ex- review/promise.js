@@ -48,6 +48,8 @@ const promise = new Promise((resolve, reject) => {
   }
 });
 
+
+//resolve 자리에 then reject자리에 catch
 promise
   .then((message) => {
     console.log("success:" + message);
