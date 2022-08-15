@@ -16,9 +16,8 @@ function UserDetailPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const decodedemail = decodeURIComponent(email);
     authAPI
-      .getUser(decodedemail)
+      .getUser(email)
       .then(setUser)
       .catch((e) => setError(e.message));
     authAPI

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { colors } from "../../style/colors";
 import { Bitcoin } from "../elements/Bitcoin";
 
@@ -10,11 +10,13 @@ export default function UserDetail({
   bitcoinBalance,
   className,
 }) {
+  const nav = useNavigate();
+
+  const handleClick = () => {
+    nav(`/${email}/detail`);
+  };
   return (
-    <StyledLink
-      to={`${encodeURIComponent(email)}/detail`}
-      className={className}
-    >
+    <StyledLink onClick={handleClick} className={className}>
       <Email>
         <h4>Email</h4>
         <span>{email}</span>
@@ -52,7 +54,7 @@ const Email = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.div`
   display: flex;
   flex-direction: column;
   background: ${colors.pink0};
@@ -65,4 +67,5 @@ const StyledLink = styled(Link)`
   &:visited {
     color: inherit;
   }
+  cursor: pointer;
 `;
