@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { colors } from "../style/colors";
+import { colors } from "../../style/colors";
 
 export default function UserDetail({
   email,
@@ -34,14 +34,11 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   background: ${colors.pink0};
-
-  width: 500px;
   padding: 24px;
 
   border-radius: 10px;
 `;
 
-// 실행 결과를 참고하여 스타일을 설정해보세요.
 const Email = styled.div`
   display: flex;
 
