@@ -41,6 +41,40 @@ const Container = styled.div`
   border-radius: 10px;
 `;
 
-const Email = styled.div``;
+// 실행 결과를 참고하여 스타일을 설정해보세요.
+const Email = styled.div`
+  display: flex;
 
-const Bitcoin = styled.div``;
+  h4 {
+    display: inline-block;
+    width: 120px;
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  span {
+    font-size: 0.85rem;
+    font-weight: bold;
+    align-self: flex-end;
+  }
+`;
+
+const Bitcoin = styled.div`
+  padding: 6px 0;
+
+  & > div + div {
+    margin-top: 4px;
+  }
+
+  .title {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: ${colors.pink5};
+    width: 120px;
+  }
+
+  .content {
+    color: ${colors.pink9};
+    font-size: 0.8rem;
+  }
+`;
