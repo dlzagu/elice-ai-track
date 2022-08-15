@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { PageLayout } from "../PageLayout";
+import { PageLayout } from "../components/PageLayout";
 import UserDetail from "../components/UserDetail";
 import * as authAPI from "../../service/auth";
 

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { colors } from "../../style/colors";
+import { Bitcoin } from "../elements/Bitcoin";
 
 export default function UserDetail({
   email,
@@ -9,7 +11,10 @@ export default function UserDetail({
   className,
 }) {
   return (
-    <Container className={className}>
+    <StyledLink
+      to={`${encodeURIComponent(email)}/detail`}
+      className={className}
+    >
       <Email>
         <h4>Email</h4>
         <span>{email}</span>
@@ -26,18 +31,9 @@ export default function UserDetail({
           <span className="content">{bitcoinBalance} BTC</span>
         </div>
       </Bitcoin>
-    </Container>
+    </StyledLink>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  background: ${colors.pink0};
-  padding: 24px;
-
-  border-radius: 10px;
-`;
 
 const Email = styled.div`
   display: flex;
@@ -56,22 +52,17 @@ const Email = styled.div`
   }
 `;
 
-const Bitcoin = styled.div`
-  padding: 6px 0;
+const StyledLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  background: ${colors.pink0};
+  padding: 24px;
 
-  & > div + div {
-    margin-top: 4px;
-  }
+  border-radius: 10px;
+  text-decoration: none;
 
-  .title {
-    display: inline-block;
-    font-size: 0.9rem;
-    color: ${colors.pink5};
-    width: 120px;
-  }
-
-  .content {
-    color: ${colors.pink9};
-    font-size: 0.8rem;
+  &:link,
+  &:visited {
+    color: inherit;
   }
 `;

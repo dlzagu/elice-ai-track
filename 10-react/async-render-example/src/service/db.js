@@ -1,5 +1,4 @@
-const delayedResolve = (data) =>
-  new Promise((resolve, reject) => setTimeout(() => resolve(data), 250));
+const delayedResolve = (data, resolve) => setTimeout(() => resolve(data), 250);
 
 const bitcoinAddressBuilder = (() => {
   const possibleCharacters =
@@ -55,43 +54,65 @@ const users = [
 
 export const db = (() => {
   const getUsers = () =>
-    delayedResolve(users.map(({ password, ...rest }) => rest));
+    new Promise((resolve) =>
+      delayedResolve(
+        users.map(({ password, ...rest }) => rest),
+        resolve
+      )
+    );
 
   const addUser = (email, password) => {
-    const foundUser = users.find((user) => user.email === email);
+    return new Promise((resolve, reject) => {
+      const foundUser = users.find((user) => user.email === email);
 
-    if (foundUser) {
-      throw new Error("Email already exists.");
-    }
+      if (foundUser) {
+        return reject(new Error("Email already exists."));
+      }
 
-    const newUser = {
-      email,
-      password,
-      ...bitcoinAddressBuilder.generateBitcoinAddress(),
-    };
+      const newUser = {
+        email,
+        password,
+        ...bitcoinAddressBuilder.generateBitcoinAddress(),
+      };
 
-    users.push(newUser);
-
-    return delayedResolve(newUser);
+      users.push(newUser);
+      delayedResolve(newUser, resolve);
+    });
   };
 
-  const findUser = (email, password) => {
-    const foundUser = users.find((user) => user.email === email);
+  const findUser = (email) => {
+    return new Promise((resolve, reject) => {
+      const foundUser = users.find((user) => user.email === email);
 
-    if (!foundUser) {
-      throw new Error("User not found");
-    }
+      if (!foundUser) {
+        return reject(new Error("User not found"));
+      }
 
-    if (foundUser.password !== password) {
-      throw new Error("Password not matched.");
-    }
+      delayedResolve(foundUser, resolve);
+    });
+  };
 
-    return delayedResolve(foundUser);
+  const transferBitcoin = (from, to, amount) => {
+    return new Promise((resolve, reject) => {
+      const fromUser = users.find((user) => user.bitcoinAddress === from);
+
+      if (fromUser.bitcoinBalance < amount) {
+        return reject(new Error("Insufficient balance."));
+      }
+
+      const toUser = users.find((user) => user.bitcoinAddress === to);
+
+      fromUser.bitcoinBalance -= amount;
+      toUser.bitcoinBalance += amount;
+
+      delayedResolve({ success: true }, resolve);
+    });
   };
 
   return {
     getUsers,
     addUser,
     findUser,
+    transferBitcoin,
   };
 })();
