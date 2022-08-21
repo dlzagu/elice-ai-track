@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import * as Api from "./apiMock";
 import { loginReducer } from "./reducer";
 
-import Header from "./components/Header";
+import HeaderTest from "./components/HeaderTest";
 import LoginForm from "./components/user/LoginForm";
 import Network from "./components/user/Network";
 import RegisterForm from "./components/user/RegisterForm";
@@ -56,7 +56,7 @@ function App() {
     <DispatchContext.Provider value={dispatch}>
       <UserStateContext.Provider value={userState}>
         <Router>
-          <Header />
+          <HeaderTest />
           <Routes>
             <Route path="/" exact element={<Portfolio />} />
             <Route path="/login" element={<LoginForm />} />
