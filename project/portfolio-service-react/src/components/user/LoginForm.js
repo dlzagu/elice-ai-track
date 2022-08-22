@@ -62,8 +62,8 @@ function LoginForm() {
     }
   };
   useEffect(() => {
-    setFade(true);
-    setTimeout(() => setFade2(true), 300);
+    setTimeout(() => setFade(true), 300);
+    setTimeout(() => setFade2(true), 600);
   }, []);
   return (
     <section className="section pb-5">

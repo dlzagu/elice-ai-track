@@ -1,10 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { Container, Col, Row } from "react-bootstrap";
 
 import { UserStateContext } from "../App";
 import * as Api from "../apiMock";
 import User from "./user/User";
+import EducationContainer from "./education/EducationContainer";
+import "../App.css";
 
 function Portfolio() {
   const navigate = useNavigate();
@@ -12,7 +14,7 @@ function Portfolio() {
   // useState 훅을 통해 portfolioOwner 상태를 생성함.
   const [portfolioOwner, setPortfolioOwner] = useState(null);
   // fetchPorfolioOwner 함수가 완료된 이후에만 (isFetchCompleted가 true여야) 컴포넌트가 구현되도록 함.
-  // 아래 코드를 보면, isFetchCompleted가 false이면 "loading..."만 반환됨.
+  // 아래 코드를 보면, isFetchCompleted가 false이면 "loading..."만 반환되어서, 화면에 이 로딩 문구만 뜨게 됨.
   const [isFetchCompleted, setIsFetchCompleted] = useState(false);
   const userState = useContext(UserStateContext);
 
@@ -53,13 +55,48 @@ function Portfolio() {
 
   return (
     <Container fluid>
+      <section class="section site-portfolio">
+        <Container>
+          <Row mb={5} className="align-items-center">
+            <Col md={12} lg={6} className="mb-4 mb-lg-0">
+              <h2>Hey, I'm Johan Stanworth</h2>
+              <p className="mb-0">
+                Freelance Creative &amp; Professional Graphics Designer
+              </p>
+            </Col>
+            <Col md={12} lg={6} className="text-start text-lg-end">
+              <div id="filters" class="filters">
+                <Link to="#" className="active">
+                  All
+                </Link>
+                <Link to="#">Web</Link>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+        <div
+          id="portfolio-grid"
+          class="row no-gutter"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <Col sm={3} md={3} lg={3} className="item web  mb-4">
+            <User
+              portfolioOwnerId={portfolioOwner.id}
+              isEditable={portfolioOwner.id === userState.user?.id}
+            />
+          </Col>
+          <Col sm={9} md={9} lg={9} className="item photography mb-4">
+            <EducationContainer
+              portfolioOwnerId={portfolioOwner.id}
+              isEditable={portfolioOwner.id === userState.user?.id}
+            />
+          </Col>
+        </div>
+      </section>
       <Row>
-        <Col md="3" lg="3">
-          <User
-            portfolioOwnerId={portfolioOwner.id}
-            isEditable={portfolioOwner.id === userState.user?.id}
-          />
-        </Col>
+        <Col md="3" lg="3"></Col>
+        <Col md="9" lg="9"></Col>
       </Row>
     </Container>
   );

@@ -61,7 +61,7 @@ function HeaderTest() {
         </div>
       </Collapse>
       <Navbar className={`custom-navbar `}>
-        <div class="container">
+        <Container>
           <Navbar.Brand href="#">MyPortfolio.</Navbar.Brand>
 
           <Link
@@ -71,7 +71,7 @@ function HeaderTest() {
           >
             <span></span>
           </Link>
-        </div>
+        </Container>
       </Navbar>
     </>
   );
