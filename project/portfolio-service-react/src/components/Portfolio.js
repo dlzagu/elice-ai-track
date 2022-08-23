@@ -7,6 +7,7 @@ import * as Api from "../apiMock";
 import User from "./user/User";
 import EducationContainer from "./education/EducationContainer";
 import "../App.css";
+import ContentForm from "./content/ContentForm";
 
 function Portfolio() {
   const navigate = useNavigate();
@@ -55,7 +56,7 @@ function Portfolio() {
 
   return (
     <Container fluid>
-      <section class="section site-portfolio">
+      <section className="section site-portfolio">
         <Container>
           <Row mb={5} className="align-items-center">
             <Col md={12} lg={6} className="mb-4 mb-lg-0">
@@ -74,30 +75,29 @@ function Portfolio() {
             </Col>
           </Row>
         </Container>
-        <div
-          id="portfolio-grid"
-          class="row no-gutter"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          <Col sm={3} md={3} lg={3} className="item web  mb-4">
+        <Row>
+          <Col md={6} lg={4} className="item web  mb-4">
             <User
               portfolioOwnerId={portfolioOwner.id}
               isEditable={portfolioOwner.id === userState.user?.id}
             />
           </Col>
-          <Col sm={9} md={9} lg={9} className="item photography mb-4">
+          <Col md={7} lg={8} className="item photography ">
             <EducationContainer
               portfolioOwnerId={portfolioOwner.id}
               isEditable={portfolioOwner.id === userState.user?.id}
             />
           </Col>
-        </div>
+        </Row>
+        <Row>
+          <Col md={6} lg={12} className="item web  mb-4">
+            <ContentForm
+              portfolioOwnerId={portfolioOwner.id}
+              isEditable={portfolioOwner.id === userState.user?.id}
+            />
+          </Col>
+        </Row>
       </section>
-      <Row>
-        <Col md="3" lg="3"></Col>
-        <Col md="9" lg="9"></Col>
-      </Row>
     </Container>
   );
 }

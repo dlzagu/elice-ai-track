@@ -39,7 +39,9 @@ function EducationContainer({ portfolioOwnerId, isEditable }) {
         {isEditable && (
           <Row className="text-center mb-4">
             <Col>
-              <Button onClick={() => setAddEducation(true)}>+</Button>
+              <Button size="md" onClick={() => setAddEducation(true)}>
+                +
+              </Button>
             </Col>
           </Row>
         )}

@@ -12,6 +12,16 @@ const userMock1 = {
       user_id: "abcde-1",
     },
   ],
+  comments: [
+    {
+      comment: "hello",
+      id: "1",
+      writer: {
+        name: "토르",
+        id: "abcde-1234",
+      },
+    },
+  ],
 };
 const userMock2 = {
   id: "abcde-12",
@@ -25,6 +35,16 @@ const userMock2 = {
       major: "소프트웨어",
       position: "박사",
       user_id: "abcde-12",
+    },
+  ],
+  comments: [
+    {
+      comment: "hello",
+      id: "12",
+      writer: {
+        name: "토르",
+        id: "abcde-1234",
+      },
     },
   ],
 };
@@ -42,6 +62,16 @@ const userMock3 = {
       user_id: "abcde-123",
     },
   ],
+  comments: [
+    {
+      comment: "hello",
+      id: "123",
+      writer: {
+        name: "토르",
+        id: "abcde-1234",
+      },
+    },
+  ],
 };
 const userMock4 = {
   id: "abcde-1234",
@@ -50,11 +80,21 @@ const userMock4 = {
   description: "Strongest Avenger",
   educations: [
     {
-      id: "12",
+      id: "1234",
       school: "한기대",
       major: "컴공",
       position: "학사",
       user_id: "abcde-1234",
+    },
+  ],
+  comments: [
+    {
+      comment: "hello",
+      id: "1234",
+      writer: {
+        name: "토르",
+        id: "abcde-1234",
+      },
     },
   ],
 };
@@ -65,11 +105,21 @@ const userMock5 = {
   description: "Strongest Agent",
   educations: [
     {
-      id: "12",
+      id: "12345",
       school: "서시대",
       major: "기계",
       position: "학사",
       user_id: "abcde-12345",
+    },
+  ],
+  comments: [
+    {
+      comment: "hello",
+      id: "12345",
+      writerId: {
+        name: "토르",
+        id: "abcde-1234",
+      },
     },
   ],
 };
@@ -96,6 +146,10 @@ async function get(endpoint, params = "") {
       return { data: [] };
     }
     return { data: matchingEducations };
+  }
+  if (endpoint === "commentlist") {
+    const data = userlist.find((user) => user.id === params).comments;
+    return { data };
   }
   return;
 }
@@ -132,6 +186,17 @@ async function post(endpoint, data) {
 
     matchingUser.educations.push({ id, school, major, position, user_id });
     console.dir(matchingUser);
+    return { data: matchingUser };
+  }
+  if (endpoint === "comment/create") {
+    const { user_id, comment } = data;
+    const matchingUser = userlist.find((user) => user.id === user_id);
+    const random = Math.random();
+    const id = `abcde-${random}`;
+    console.log(matchingUser);
+    const writer = { name: "토르", id: "abcde-1234" };
+    matchingUser.comments.push({ comment, id, writer });
+
     return { data: matchingUser };
   }
 
@@ -175,8 +240,64 @@ async function put(endpoint, data) {
 
     return response;
   }
+  if (req === "comments") {
+    const matchingUser = userlist.find(
+      (user) => user.comments.find((comment) => comment.id === req_id) //user educations 찾기
+    );
+    matchingUser.comments = matchingUser.comments.filter(
+      // education id와 같은 education 필터해서 삭제
+      (comment) => comment.id !== req_id
+    );
+
+    matchingUser.comments.push({
+      ...data,
+      id: req_id,
+      writer: {
+        name: matchingUser.name,
+        id: matchingUser.id,
+      },
+    });
+
+    const response = { endpoint };
+
+    return response;
+  }
+}
+async function del(endpoint, params = "") {
+  console.log(
+    `%cDELETE 요청 ${"/" + endpoint + "/" + params}`,
+    "color: #a25cd1;"
+  );
+
+  if (endpoint === "educations") {
+    const matchingUser = userlist.find(
+      (user) => user.educations.find((education) => education.id === params) //user educations 찾기
+    );
+    matchingUser.educations = matchingUser.educations.filter(
+      // education id와 같은 education 필터해서 삭제
+      (education) => education.id !== params
+    );
+
+    const response = { endpoint };
+
+    return response;
+  }
+  if (endpoint === "comments") {
+    const matchingUser = userlist.find(
+      (user) => user.comments.find((comment) => comment.id === params) //user educations 찾기
+    );
+    matchingUser.comments = matchingUser.comments.filter(
+      // education id와 같은 education 필터해서 삭제
+      (comment) => comment.id !== params
+    );
+    console.log(matchingUser);
+
+    const response = { endpoint };
+
+    return response;
+  }
 }
 
 // 아래처럼 export한 후, import * as A 방식으로 가져오면,
 // A.get, A.put 로 쓸 수 있음.
-export { get, post, put };
+export { get, post, put, del as delete };

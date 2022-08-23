@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button, Navbar } from "react-bootstrap";
+import { Container, Row, Col, Navbar } from "react-bootstrap";
 import Collapse from "react-bootstrap/Collapse";
 
 import "../App.css";
