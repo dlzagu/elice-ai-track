@@ -60,8 +60,8 @@ function Portfolio() {
         <Container>
           <Row mb={5} className="align-items-center">
             <Col md={12} lg={6} className="mb-4 mb-lg-0">
-              <h2>Hey, I'm Johan Stanworth</h2>
-              <p className="mb-0">
+              <h2 className="portfolio-title">Hey, I'm Johan Stanworth</h2>
+              <p className="portfolio-sub-title">
                 Freelance Creative &amp; Professional Graphics Designer
               </p>
             </Col>

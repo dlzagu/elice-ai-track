@@ -79,5 +79,5 @@ const IconBlock = styled.div`
 `;
 
 const CardItemBlock = styled.div`
-  width: 16rem;
+  width: 20rem;
 `;

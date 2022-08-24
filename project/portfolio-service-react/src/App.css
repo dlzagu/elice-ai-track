@@ -1,4 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=https://fonts.googleapis.com/css?family=Inconsolata:400,500,600,700|Raleway:400,400i,500,500i,600,600i,700,700i");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+
+  @media only screen and(max-width: $bp-large) {
+    font-size: 50%;
+  }
+}
+
 body > * {
   font-family: "Inconsolata", monospace;
   color: #0d1e2d;
@@ -23,11 +43,12 @@ h6,
   font-family: "Raleway", sans-serif;
 }
 
-.section > * {
-  padding: 2rem 2rem;
+.section {
+  padding: 7rem 0;
 }
 
 .filters a {
+  font-size: 1.5rem;
   text-decoration: none;
   color: #000;
   display: inline-block;
@@ -83,7 +104,7 @@ h6,
 
 .custom-navmenu .custom-menu li {
   margin-bottom: 0;
-  font-size: 20px;
+  font-size: 2rem;
 }
 
 .custom-navmenu .custom-menu li a {
@@ -101,12 +122,13 @@ h6,
 }
 
 .custom-navmenu h3 {
-  font-size: 20px;
+  font-size: 2rem;
   color: #fff;
 }
 
 .custom-navmenu p {
   color: rgba(255, 255, 255, 0.6);
+  font-size: 1.3rem;
 }
 
 .custom-navmenu a {
@@ -132,7 +154,8 @@ h6,
 }
 
 .custom-navbar .navbar-brand {
-  font-size: 1.7rem;
+  font-size: 4rem;
+  cursor: pointer;
 }
 
 /* Burger */
@@ -209,4 +232,39 @@ h6,
 
 .burger:focus {
   outline: none;
+}
+
+/*--------------------------------------------------------------
+# Login
+--------------------------------------------------------------*/
+.login-title {
+  font-size: 3rem;
+}
+
+.login-sub-title {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+
+/*--------------------------------------------------------------
+# Login
+--------------------------------------------------------------*/
+.register-title {
+  font-size: 3rem;
+}
+
+.register-sub-title {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+/*--------------------------------------------------------------
+# Portfolio
+--------------------------------------------------------------*/
+.portfolio-title {
+  font-size: 3rem;
+}
+
+.portfolio-sub-title {
+  margin-top: 2rem;
+  font-size: 1.5rem;
 }

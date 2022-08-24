@@ -71,8 +71,8 @@ function LoginForm() {
         <Row md={5} className="align-items-end">
           <Fade in={fade}>
             <Col md={6}>
-              <h2>Login</h2>
-              <p class="mb-0">
+              <h2 className="login-title">Login</h2>
+              <p className="login-sub-title">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Quisquam necessitatibus incidunt ut officiis explicabo
                 inventore.

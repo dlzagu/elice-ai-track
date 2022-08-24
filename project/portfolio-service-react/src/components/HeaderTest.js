@@ -1,12 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Navbar } from "react-bootstrap";
 import Collapse from "react-bootstrap/Collapse";
-
+import { UserStateContext, DispatchContext } from "../App";
 import "../App.css";
 
 function HeaderTest() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const userState = useContext(UserStateContext);
+  const dispatch = useContext(DispatchContext);
+
+  // 전역상태에서 user가 null이 아니라면 로그인 성공 상태임.
+  const isLogin = !!userState.user;
+  const logout = () => {
+    // sessionStorage 에 저장했던 JWT 토큰을 삭제함.
+    sessionStorage.removeItem("userToken");
+    // dispatch 함수를 이용해 로그아웃함.
+    dispatch({ type: "LOGOUT" });
+    // 기본 페이지로 돌아감.
+    navigate("/");
+  };
   const [open, setOpen] = useState(false);
+  const [toggle, setToggle] = useState([false, false, false]);
   return (
     <>
       <Collapse in={open}>
@@ -15,33 +34,30 @@ function HeaderTest() {
             <Row className="lign-items-start">
               <Col md={2}>
                 <ul className="custom-menu">
-                  <li className="active">
-                    <Link to="#">Home</Link>
+                  <li>
+                    <Nav.Link onClick={() => navigate("/network")}>
+                      My page
+                    </Nav.Link>
+                  </li>
+                  <li className={toggle[1] ? "ative" : ""}>
+                    <Nav.Link onClick={() => navigate("/network")}>
+                      Network
+                    </Nav.Link>
                   </li>
                   <li>
-                    <Link to="#">About Me</Link>
-                  </li>
-                  <li>
-                    <Link to="#">Services</Link>
-                  </li>
-                  <li>
-                    <Link to="#">Works</Link>
-                  </li>
-                  <li>
-                    <Link to="#">Contact</Link>
+                    <Nav.Link onClick={logout}>Logout</Nav.Link>
                   </li>
                 </ul>
               </Col>
-              <Col md={6} className="d-none d-md-block mr-auto">
-                <div className="tweet d-flex">
-                  <span className="bi bi-twitter text-white mt-2 mr-3"></span>
+              <Col md={6} className="d-none d-md-block mr-auto ">
+                <div className="tweet d-flex ">
+                  <span className="text-white mt-2 mr-3"></span>
                   <div>
                     <p>
                       <em>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Quisquam necessitatibus incidunt ut officiis explicabo
                         inventore. <br />
-                        <Link to="#">t.co/v82jsk</Link>
                       </em>
                     </p>
                   </div>
@@ -60,9 +76,11 @@ function HeaderTest() {
           </Container>
         </div>
       </Collapse>
-      <Navbar className={`custom-navbar `}>
+      <Navbar className="custom-navbar">
         <Container>
-          <Navbar.Brand href="#">MyPortfolio.</Navbar.Brand>
+          <Navbar.Brand onClick={() => navigate("/")}>
+            MyPortfolio.
+          </Navbar.Brand>
 
           <Link
             to="#"

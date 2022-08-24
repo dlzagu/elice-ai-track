@@ -4,7 +4,7 @@ import ContentCard from "./ContentCard";
 
 const Contents = ({ comments, setComments, fetch }) => {
   return (
-    <Card.Body>
+    <Card.Body style={{ maxHeight: "350px", overflow: "auto" }}>
       {comments.map((comment) => (
         <ContentCard
           comment={comment}
